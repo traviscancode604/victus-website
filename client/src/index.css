@@ -1,52 +1,73 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --font-display: 'Space Grotesk', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
+  --font-display: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
 
-  /* Architectural Palette */
-  --background: 0 0% 100%;       /* Pure White */
-  --foreground: 0 0% 20%;        /* Soft Black */
-  
-  --primary: 0 0% 10%;           /* Near Black */
-  --primary-foreground: 0 0% 98%; 
+  /* === Core architectural palette === */
 
-  --secondary: 0 0% 96%;         /* Very Light Gray */
-  --secondary-foreground: 0 0% 10%;
+  /* Backgrounds */
+  --background: 0 0% 98%;           /* cleaner neutral background */
+  --secondary: 0 0% 96%;
+  --card: 0 0% 100%;
+  --popover: 0 0% 100%;
 
-  --muted: 0 0% 96%;
-  --muted-foreground: 0 0% 45%;
+  /* Primary text / surfaces — Charcoal Black (#1F1F1F) */
+  --foreground: 0 0% 12%;
+  --primary: 0 0% 12%;
+  --primary-foreground: 0 0% 98%;
+  --card-foreground: 0 0% 12%;
+  --popover-foreground: 0 0% 12%;
 
-  --accent: 0 0% 90%;            /* Medium Gray for borders/lines */
-  --accent-foreground: 0 0% 10%;
+  /* Secondary text */
+  --secondary-foreground: 0 0% 22%;
+  --muted: 0 0% 95%;
+  --muted-foreground: 0 0% 40%;
 
+  /* Borders / dividers */
+  --border: 0 0% 85%;
+  --input: 0 0% 88%;
+  --primary-border: 0 0% 12%;
+  --secondary-border: 0 0% 85%;
+  --muted-border: 0 0% 88%;
+  --card-border: 0 0% 88%;
+  --popover-border: 0 0% 88%;
+
+  /* Accent — Burnt Orange (#C15A00) */
+  --accent: 28 100% 38%;
+  --accent-foreground: 0 0% 100%;
+  --accent-border: 28 100% 38%;
+  --ring: 28 100% 38%;
+
+  /* Destructive */
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
+  --destructive-border: 0 84% 60%;
 
-  --border: 0 0% 92%;
-  --input: 0 0% 92%;
-  --ring: 0 0% 10%;
-
-  --radius: 0rem; /* Sharp corners for architectural feel */
+  --radius: 0rem;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
-    @apply bg-background text-foreground antialiased selection:bg-black selection:text-white;
+    @apply bg-background text-foreground antialiased selection:bg-foreground selection:text-background;
     font-family: var(--font-body);
+    letter-spacing: -0.01em;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     @apply tracking-tight font-medium;
+    letter-spacing: -0.02em;
+  }
+
+  a {
+    @apply transition-colors;
   }
 }
 
